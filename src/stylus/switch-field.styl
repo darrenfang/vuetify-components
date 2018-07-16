@@ -1,0 +1,42 @@
+.switch-field
+  .switch-input
+    margin-top -18px
+
+.switch-field
+  .switch-input label
+    color rgba(255, 255, 255, .7) !important
+
+.switch-field
+  .switch-label-active
+    transform translate(0, 0px) scale(0.75)
+
+.switch-field
+  .switch-label
+    display inline-block
+    font-size 16px
+    line-height 30px
+    height 30px
+    max-width 90%
+    min-width 0
+    overflow hidden
+    pointer-events none
+    text-align left
+    text-overflow ellipsis
+    -webkit-transform-origin top left
+    transform-origin top left
+    -webkit-transition 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)
+    transition 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)
+    white-space nowrap
+    width 100%
+    z-index 0
+    color rgba(255, 255, 255, .5)
+
+/* Set color to green when the control is readonly. */
+.switch-field-readonly
+  .switch-input.v-input--is-label-active .v-input--switch__thumb
+    background-color #4caf50 !important
+
+/* Set color to red when the control is readonly. */
+.switch-field-readonly
+  .switch-input .v-input--switch__thumb
+    background-color #ff5252 !important
