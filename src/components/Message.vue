@@ -34,7 +34,7 @@
         type: String,
         default: 'info'
       },
-      vertical: {
+      mode: {
         type: String,
         default: 'vertical'
       },
