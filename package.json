@@ -1,6 +1,6 @@
 {
   "name": "vuetify-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "UI components for Vuetify.js",
   "author": "Darren Fang <idarrenfang@gmail.com>",
   "main": "dist/index.js",
@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "vue": "^2.3.0",
-    "vuetify": "^1.1.4"
+    "vuetify": "^1.5.14"
   }
 }
