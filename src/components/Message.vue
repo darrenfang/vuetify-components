@@ -4,9 +4,10 @@
             :timeout="timeout"
             :color="color"
             :multi-line="mode === 'multi-line'"
-            :vertical="mode === 'vertical'">
+            :vertical="mode === 'vertical'"
+            @input="inputHandler">
         <span v-html="displayText"></span>
-        <v-btn dark flat @click="closeMessage">{{closeText}}</v-btn>
+        <v-btn dark flat @click="closeHandler">{{closeText}}</v-btn>
     </v-snackbar>
 </template>
 
@@ -14,11 +15,11 @@
   export default {
     name: 'v-message',
     model: {
-      prop: 'display',
+      prop: 'value',
       event: 'close'
     },
     props: {
-      display: {
+      value: {
         type: Boolean,
         default: false
       },
@@ -28,7 +29,7 @@
       },
       timeout: {
         type: Number,
-        default: 0
+        default: 10
       },
       color: {
         type: String,
@@ -43,14 +44,27 @@
         default: 'Close'
       }
     },
+    data () {
+      return {
+        display: false
+      }
+    },
     computed: {
       displayText () {
         return this.text.replace('\n', '<br />')
       }
     },
     methods: {
-      closeMessage: function () {
-        this.$emit('close', false)
+      closeHandler: function () {
+        this.$emit('close')
+      },
+      inputHandler: function () {
+        this.$emit('close')
+      }
+    },
+    watch: {
+      value: function (newValue) {
+        this.display = newValue
       }
     }
   }
