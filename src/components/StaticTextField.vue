@@ -1,18 +1,26 @@
 <template>
-    <v-text-field
-            :value="value"
-            :label="label"
-            :counter="counter"
-            :hint="hint"
-            :persistent-hint="persistentHint"
-            :loading="loading"
-            disabled
-            class="v-static-text-field">
-        <slot name="progress" slot="progress">
-            <v-progress-linear :indeterminate="true" :color="progressColor" :width="progressWidth">
-            </v-progress-linear>
-        </slot>
-    </v-text-field>
+    <div>
+        <v-text-field
+                :value="displayText"
+                :label="label"
+                :counter="counter"
+                :hint="hint"
+                :persistent-hint="persistentHint"
+                :loading="loading"
+                readonly
+                disabled
+                class="v-static-text-field"
+        >
+            <template v-slot:progress>
+                <v-progress-linear
+                        indeterminate
+                        :color="progressColor"
+                        :height="progressHeight"
+                >
+                </v-progress-linear>
+            </template>
+        </v-text-field>
+    </div>
 </template>
 
 <script>
@@ -23,13 +31,13 @@
         type: String
       },
       value: {
-        type: String
+        required: true
       },
       hint: {
         type: String
       },
       counter: {
-        type: Number
+        type: Boolean
       },
       persistentHint: {
         type: Boolean
@@ -41,9 +49,14 @@
         type: String,
         default: 'primary'
       },
-      progressWidth: {
+      progressHeight: {
         type: Number,
         default: 3
+      }
+    },
+    computed: {
+      displayText: function () {
+        return this.loading ? '' : this.value
       }
     }
   }
